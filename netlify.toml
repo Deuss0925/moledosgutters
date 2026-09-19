@@ -12,6 +12,9 @@
 
 # --- Archivos internos: nunca públicos ---
 # publish = "." sube toda la carpeta, así que lo que no debe verse se bloquea aquí.
+# OJO: en redirects el comodín * solo funciona AL FINAL de la ruta. "/_*" sirve;
+# "/*.md" o "/*.bat" NO bloquean nada. Cada archivo interno va con su regla explícita.
+# (netlify.toml y .gitignore no hace falta: Netlify ya no los sirve.)
 [[redirects]]
   from = "/_*"
   to = "/404.html"
@@ -19,13 +22,7 @@
   force = true
 
 [[redirects]]
-  from = "/*.md"
-  to = "/404.html"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/*.bat"
+  from = "/README.md"
   to = "/404.html"
   status = 404
   force = true

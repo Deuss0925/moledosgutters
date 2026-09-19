@@ -92,4 +92,6 @@ Las notas de trabajo (`_TRASPASO-A-ALFREDO.md`, respaldos `_backup-*`, scripts `
 
 Como Netlify publica toda la carpeta (`publish = "."`), cualquier archivo que quede aquí
 dentro queda accesible desde internet. Por eso `netlify.toml` además devuelve 404 para
-`/_*`, `*.md` y `*.bat`: es el cinturón por si algo se cuela.
+`/_*` y `/README.md`: es el cinturón por si algo se cuela. Ojo: el comodín `*` solo
+funciona al final de la ruta, así que un archivo nuevo que no empiece por `_` necesita
+su propia regla.
