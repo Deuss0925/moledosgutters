@@ -1,0 +1,50 @@
+# Moledo's Gutter Solutions — moledosgutters.com
+# Sitio estático: no hay build. Netlify publica esta carpeta tal cual.
+
+[build]
+  publish = "."
+
+# La landing vive en /free-estimate (sin .html)
+[[redirects]]
+  from = "/free-estimate"
+  to = "/free-estimate.html"
+  status = 200
+
+# --- Archivos internos: nunca públicos ---
+# publish = "." sube toda la carpeta, así que lo que no debe verse se bloquea aquí.
+[[redirects]]
+  from = "/_*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*.bat"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# Las fotos tienen nombre fijo: cache largo pero revalidable.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, must-revalidate"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Por si algo interno quedó indexado antes de esto.
+[[headers]]
+  for = "/_*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

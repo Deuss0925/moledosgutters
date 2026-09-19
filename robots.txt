@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /_
+Allow: /
+
+Sitemap: https://moledosgutters.com/sitemap.xml
